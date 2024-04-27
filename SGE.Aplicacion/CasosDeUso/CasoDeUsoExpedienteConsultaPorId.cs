@@ -1,11 +1,11 @@
 ﻿namespace SGE.Aplicacion;
 
-public class ConsultaExpedienteConTramitesCasoUso
+public class CasoDeUsoExpedienteConsultaPorId
 {
     private readonly IExpedienteRepositorio _expedienteRepositorio;
     private readonly ITramiteRepositorio _tramiteRepositorio;
 
-    public ConsultaExpedienteConTramitesCasoUso(IExpedienteRepositorio expedienteRepositorio, ITramiteRepositorio tramiteRepositorio)
+    public CasoDeUsoExpedienteConsultaPorId(IExpedienteRepositorio expedienteRepositorio, ITramiteRepositorio tramiteRepositorio)
     {
         _expedienteRepositorio = expedienteRepositorio;
         _tramiteRepositorio = tramiteRepositorio;

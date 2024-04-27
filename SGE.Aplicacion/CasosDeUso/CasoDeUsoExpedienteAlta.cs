@@ -1,10 +1,10 @@
 ﻿namespace SGE.Aplicacion;
 
-public class AltaExpedienteCasoUso
+public class CasoDeUsoExpedienteAlta
 {
     private readonly IExpedienteRepositorio _expedienteRepositorio;
 
-    public AltaExpedienteCasoUso(IExpedienteRepositorio expedienteRepositorio)
+    public CasoDeUsoExpedienteAlta(IExpedienteRepositorio expedienteRepositorio)
     {
         _expedienteRepositorio = expedienteRepositorio;
     }
