@@ -13,8 +13,8 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
         sw.WriteLine(e.Id=cantE++);  // ? 
         sw.WriteLine(e.Caratula);
         sw.WriteLine(e.FechaCreacion);
-        sw.WriteLine(e.FechaUltMod);
-        sw.WriteLine(e.IdUsuario);
+        sw.WriteLine(e.UltimaModificacion);
+        sw.WriteLine(e.IdUsuarioUltimaModificacion);
         sw.WriteLine(e.Estado);
     }
 
