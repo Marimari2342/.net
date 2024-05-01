@@ -6,5 +6,6 @@ public interface IExpedienteRepositorio
     void Agregar(Expediente expediente);
     void Eliminar(int id);
     void Modificar(Expediente expediente);
+    List <Expediente> ObtenerTodos();
     // Otros métodos necesarios
 }
