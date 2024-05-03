@@ -4,7 +4,9 @@
 ExpedienteAlta: Puede realizar altas de expedientes
 Se debe garantizar que para las operaciones de alta, baja y modificación se verifique la autorización del
 usuario antes de proceder. Por lo tanto, el método Ejecutar de estos casos de uso deberá recibir también el
-Id del usuario como parámetro.*/
+Id del usuario como parámetro.
+Chequear que no se intenta acceder a un repos que no existe
+En los casos uso try catch o como?*/
 
 public class CasoDeUsoExpedienteAlta
 {
