@@ -1,6 +1,6 @@
 ﻿namespace SGE.Aplicacion;
 
-public class Tramite
+public class Tramite: ITramiteRepositorio, IServicioAutorizacion
 {
     public int Id { get; set; }
     public int ExpedienteId { get; set; }

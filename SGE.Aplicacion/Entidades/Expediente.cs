@@ -1,6 +1,6 @@
 ﻿namespace SGE.Aplicacion;
 
-public class Expediente
+public class Expediente: IExpedienteRepositorio, IServicioAutorizacion
 {
     public int Id { get; set; }
     //Probando Mariaaannn
