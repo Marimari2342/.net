@@ -7,7 +7,7 @@ usuario antes de proceder. Por lo tanto, el método Ejecutar de estos casos de u
 Id del usuario como parámetro.
 Chequear que no se intenta acceder a un repos que no existe
 En los casos uso try catch o como?
-Hola Lau*/
+*/
 
 public class CasoDeUsoExpedienteAlta
 {
