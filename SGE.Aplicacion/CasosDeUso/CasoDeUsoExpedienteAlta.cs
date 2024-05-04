@@ -16,15 +16,8 @@ Chequear que no se intenta acceder a un repos que no existe
 En los casos uso try catch o como?
 */
 
-public class CasoDeUsoExpedienteAlta
+public class CasoDeUsoExpedienteAlta(IExpedienteRepositorio expedienteRepositorio)
 {
-    private readonly IExpedienteRepositorio _expedienteRepositorio;
-
-    public CasoDeUsoExpedienteAlta(IExpedienteRepositorio expedienteRepositorio)
-    {
-        _expedienteRepositorio = expedienteRepositorio;
-    }
-
     public void Ejecutar(Expediente expediente, int idUsuario)
     {
         // Verificar permisos

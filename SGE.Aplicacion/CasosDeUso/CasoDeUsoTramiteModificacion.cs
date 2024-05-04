@@ -1,15 +1,8 @@
 namespace SGE.Aplicacion;
 
 /*TramiteModificacion: Puede realizar modificaciones de trámites*/
-public class CasoDeUsoTramiteModificacion
+public class CasoDeUsoTramiteModificacion(ITramiteRepositorio tramiteRepositorio)
 {
-    private readonly ITramiteRepositorio _tramiteRepositorio;
-
-    public CasoDeUsoTramiteModificacion(ITramiteRepositorio tramiteRepositorio)
-    {
-        _tramiteRepositorio = tramiteRepositorio;
-    }
-
     public void Ejecutar(Tramite tramite, int idUsuario)
     {
         // Verificar permisos
