@@ -23,7 +23,7 @@ public class CasoDeUsoTramiteAlta
         TramiteValidador.Validar(tramite);
 
         // Asignar Id [ObtenerSiguienteId() donde iría???]
-        tramite.Id = _tramiteRepositorio.ObtenerSiguienteId();
+        tramite.Id = _tramiteRepositorio.ObtenerSiguienteId(); //Corresponde al repositorio otorgar el Id
 
         // Asignar fecha de creación y modificación
         tramite.FechaCreacion = DateTime.Now;

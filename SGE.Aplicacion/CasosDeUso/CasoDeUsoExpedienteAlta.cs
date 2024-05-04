@@ -37,7 +37,7 @@ public class CasoDeUsoExpedienteAlta
         ExpedienteValidador.Validar(expediente);
 
         // Asignar Id
-        expediente.Id = _expedienteRepositorio.ObtenerSiguienteId();
+        expediente.Id = _expedienteRepositorio.ObtenerSiguienteId(); //Corresponde al repositorio otorgar el Id
 
         // Asignar fecha de creación y modificación
         expediente.FechaCreacion = DateTime.Now;
