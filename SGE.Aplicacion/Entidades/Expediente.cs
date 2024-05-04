@@ -9,5 +9,5 @@ public class Expediente: IExpedienteRepositorio, IServicioAutorizacion
     public int IdUsuarioUltimaModificacion { get; set; } //identificacion del ultimo usuario que modificó el expediente
     public EstadoExpediente Estado { get; set; } //posibles valores enumerativos = EstadoExpediente
 
-    //Invalidar el método toString()
+    //Invalidar el método toString()..
 }

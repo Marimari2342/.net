@@ -15,11 +15,10 @@ asociados*/
 
 public class CasoDeUsoExpedienteBaja
 {
-    private readonly IExpedienteRepositorio _expedienteRepositorio;
+    
 
     public CasoDeUsoExpedienteBaja(IExpedienteRepositorio expedienteRepositorio)
     {
-        _expedienteRepositorio = expedienteRepositorio;
     }
 
     public void Ejecutar(int idExpediente, int idUsuario)
@@ -37,7 +36,7 @@ public class CasoDeUsoExpedienteBaja
         }
 
         // Eliminar expediente en el repositorio
-        _expedienteRepositorio.Eliminar(expediente);
+        expedienteRepositorio.Eliminar(expediente);
 
         //Al dar de baja el expediente, también doy de baja todos los trámites asociados
     }
