@@ -5,11 +5,13 @@ Necesito -->    El ID del expediente
                 El ID del usuario que lo quiere dar de baja
                 Verificar que el usuario tenga el permiso para esto
                 Verificar que el ID del expediente sea válido
-                Anotar la fecha de eliminacion (?) creo que no....
                 Eliminar expediente
 Se debe garantizar que para las operaciones de alta, baja y modificación se verifique la autorización del
 usuario antes de proceder. Por lo tanto, el método Ejecutar de estos casos de uso deberá recibir también el
-Id del usuario como parámetro.*/
+Id del usuario como parámetro.
+
+Al dar de baja el expediente, también doy de baja todos los trámites
+asociados*/
 
 public class CasoDeUsoExpedienteBaja
 {
@@ -36,5 +38,7 @@ public class CasoDeUsoExpedienteBaja
 
         // Eliminar expediente en el repositorio
         _expedienteRepositorio.Eliminar(expediente);
+
+        //Al dar de baja el expediente, también doy de baja todos los trámites asociados
     }
 }

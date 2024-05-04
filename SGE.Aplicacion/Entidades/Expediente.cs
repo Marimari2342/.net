@@ -3,6 +3,7 @@
 public class Expediente: IExpedienteRepositorio, IServicioAutorizacion
 {
     public int Id { get; set; }
+    //Probando Mariaaannn
     public string Caratula { get; set; }
     public DateTime FechaCreacion { get; set; }
     public DateTime UltimaModificacion { get; set; }

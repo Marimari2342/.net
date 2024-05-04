@@ -7,5 +7,16 @@ Id del usuario como parámetro.*/
 
 public class CasoDeUsoExpedienteModificacion
 {
+    private readonly IExpedienteRepositorio _expedienteRepositorio;
 
+    public CasoDeUsoExpedienteModificacion(IExpedienteRepositorio expedienteRepositorio)
+    {
+        _expedienteRepositorio = expedienteRepositorio;
+    }
+
+    public void Ejecutar(Expediente expediente, int idUsuario)
+    {
+
+        // Asignar fecha de modificación
+        expediente.FechaModificacion = DateTime.Now;
 }

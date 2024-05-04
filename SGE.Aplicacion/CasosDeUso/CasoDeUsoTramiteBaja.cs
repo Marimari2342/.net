@@ -4,5 +4,30 @@ namespace SGE.Aplicacion;
 
 public class CasoDeUsoTramiteBaja
 {
+    private readonly ITramiteRepositorio _tramiteRepositorio;
 
+    public CasoDeUsoTramiteBaja(ITramiteRepositorio tramiteRepositorio)
+    {
+        _tramiteRepositorio = tramiteRepositorio;
+    }
+
+    public void Ejecutar(Tramite tramite, int idUsuario)
+    {
+        // Verificar permisos
+        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.TramiteBaja))
+        {
+            throw new AutorizacionException("El usuario no tiene permiso para realizar esta operación.");
+        }
+
+        // Validar tramite
+        TramiteValidador.Validar(tramite);
+
+        // Eliminar expediente en el repositorio
+        _tramiteRepositorio.Eliminar(tramite);
+
+        /* Si elimino el tramite... en algún lado tengo que cambiar 
+        la etiqueta tramite a la etiqueta del tramite anterior y a su vez
+        mirar que esa nueva etiqueta no me cambie el estado del expediente
+        que contiene este trámite*/
+    }
 }
