@@ -5,18 +5,29 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
 {
 
     readonly string _nombreArch;
-    static int cantE = 0; //???
 
+    //Retorna id para el expediente que se quiere dar de alta
+    public int ObtenerSiguienteId (){  
+        int id=0;
+        if(File.Exists(_nombreArch)) { 
+          List<Expediente> list =ObtenerTodos();
+          foreach (Expediente exp in list){
+            id=exp.Id;
+          }
+        }
+        return ++id;
+    }
 
     public void Agregar(Expediente e)
     {
         using var sw = new StreamWriter(_nombreArch, true);
-        sw.WriteLine(e.Id = cantE++);  // ??? 
+        sw.WriteLine(e.Id);  
         sw.WriteLine(e.Caratula);
         sw.WriteLine(e.FechaCreacion);
         sw.WriteLine(e.UltimaModificacion);
         sw.WriteLine(e.IdUsuarioUltimaModificacion);
         sw.WriteLine(e.Estado);
+        sw.Close();
     }
 
     public Expediente ObtenerPorId(int id)
