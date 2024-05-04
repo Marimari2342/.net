@@ -10,5 +10,8 @@ public class Tramite: ITramiteRepositorio, IServicioAutorizacion
     public DateTime UltimaModificacion { get; set; } //fecha de ultima modificación, cada vez que modifico, cambia
     public int IdUsuarioUltimaModificacion { get; set; } //identificacion del ultimo usuario que modificó el tramite
 
-    //Invalidar el método toString()
+    public override string ToString()
+    {
+    return $"Id: {Id}, Id del expediente: {ExpedienteId}, Etiqueta de tipo de tramite: {Etiqueta}, Contenido del mismo: {Contenido}, Fecha de creacion: {FechaCreacion}, Ultima modificacion: {UltimaModificacion}, Id del usuario con ultima modificacion {IdUsuarioUltimaModificacion}";
+    }
 }
