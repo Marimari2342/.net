@@ -2,15 +2,8 @@ namespace SGE.Aplicacion;
 
 /*TramiteBaja: Puede realizar bajas de trámites*/
 
-public class CasoDeUsoTramiteBaja
+public class CasoDeUsoTramiteBaja(ITramiteRepositorio tramiteRepositorio)
 {
-    private readonly ITramiteRepositorio _tramiteRepositorio;
-
-    public CasoDeUsoTramiteBaja(ITramiteRepositorio tramiteRepositorio)
-    {
-        _tramiteRepositorio = tramiteRepositorio;
-    }
-
     public void Ejecutar(Tramite tramite, int idUsuario)
     {
         // Verificar permisos
