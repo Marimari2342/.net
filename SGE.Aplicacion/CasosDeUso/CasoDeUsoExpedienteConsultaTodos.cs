@@ -1,5 +1,5 @@
 namespace SGE.Aplicacion;
-
+//Este entonces estaria???
 public class CasoDeUsoExpedienteConsultaTodos(IExpedienteRepositorio expedienteRepositorio)
 {
     public List<Expediente> Ejecutar()
