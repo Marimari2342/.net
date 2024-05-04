@@ -3,13 +3,10 @@ using SGE.Aplicacion;
 
 public class ExpedienteRepositorioTXT : IExpedienteRepositorio
 {
-<<<<<<< HEAD
     
     readonly string _nombreArch; //No deberíamos hacer readonly string _nombreArch= "expedientes.txt"? 
     //Porque el nombre del archivo _nombreArch se declara como un campo de solo lectura y no se inicializa en ningún lugar
     static int cantE=0; //???
-=======
->>>>>>> c90b16b43a92f6109bda77a0835a8c7f10a9f2c7
 
     readonly string _nombreArch;
 
