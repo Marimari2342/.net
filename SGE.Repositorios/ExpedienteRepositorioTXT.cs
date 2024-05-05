@@ -53,6 +53,7 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
                 resultado = expediente;
             }
         }
+        sr.Close();
         if (resultado == null)
         {
             throw new RepositorioException($"No existe un expediente con id: {id}");
@@ -98,6 +99,7 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
             expediente.Estado = sr.ReadLine() ?? "";
             resultado.Add(expediente);
         }
+        sr.Close();
         return resultado;
     }
 
