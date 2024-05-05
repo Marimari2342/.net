@@ -33,11 +33,26 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
         sw.Close();
     }
 
+    //Obtener un expediente por su Id
+    //--> Lo uso en CasoDeUsoExpedienteConsultaPorId [VERIFIQUEN!!]
     public Expediente ObtenerPorId(int id)
     {
         Expediente? resultado = null;
-        //Codigo...
-
+        using var sr = new StreamReader(_nombreArch);
+        while (!sr.EndOfStream)&&(expediente.Id != id)
+        {
+            var expediente = new Expediente();
+            expediente.Id = int.Parse(sr.ReadLine() ?? "");
+            expediente.Caratula = sr.ReadLine() ?? "";
+            expediente.FechaCreacion = DateTime.Parse(sr.ReadLine() ?? "");
+            expediente.UltimaModificacion = DateTime.Parse(sr.ReadLine() ?? "");
+            expediente.IdUsuarioUltimaModificacion = int.Parse(sr.ReadLine() ?? "");
+            expediente.Estado = sr.ReadLine() ?? "";  
+            if (expediente.Id != id)
+            {
+                resultado = expediente;
+            }
+        }
         if (resultado == null)
         {
             throw new RepositorioException($"No existe un expediente con id: {id}");
@@ -67,7 +82,7 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
     }
 
     //Obtener la lista de todos los expedientes (sin sus Tramites)
-    //--> Lo uso en CasoDeUsoExpedienteConsultaTodos 
+    //--> Lo uso en CasoDeUsoExpedienteConsultaTodos [VERIFIQUEN!!]
     public List<Expediente> ObtenerTodos()
     {
         var resultado = new List<Expediente>();
