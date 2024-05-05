@@ -8,5 +8,6 @@ public interface ITramiteRepositorio
     void Modificar(Tramite tramite);
     List<Tramite> ListarPorIdExpediente(int id);
     List<Tramite> ListarPorEtiqueta(EtiquetaTramite etiqueta);
+    int ObtenerSiguienteId();
     // Otros métodos necesarios
 }
