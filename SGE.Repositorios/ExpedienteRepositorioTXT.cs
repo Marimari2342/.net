@@ -6,9 +6,8 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
     
     readonly string _nombreArch; //No deberíamos hacer readonly string _nombreArch= "expedientes.txt"? 
     //Porque el nombre del archivo _nombreArch se declara como un campo de solo lectura y no se inicializa en ningún lugar
-    static int cantE=0; //???
 
-    readonly string _nombreArch;
+
 
     //Retorna id para el expediente que se quiere dar de alta
     public int ObtenerSiguienteId (){  

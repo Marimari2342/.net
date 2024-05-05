@@ -7,5 +7,6 @@ public interface IExpedienteRepositorio
     void Eliminar(int id);
     void Modificar(Expediente expediente);
     List <Expediente> ObtenerTodos();
+    int ObtenerSiguienteId();
     // Otros métodos necesarios
 }
