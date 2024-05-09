@@ -6,9 +6,8 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
     
     readonly string _nombreArch; //No deberíamos hacer readonly string _nombreArch= "expedientes.txt"? 
     //Porque el nombre del archivo _nombreArch se declara como un campo de solo lectura y no se inicializa en ningún lugar
-    static int cantE=0; //???
 
-    readonly string _nombreArch;
+
 
     //Retorna id para el expediente que se quiere dar de alta
     public int ObtenerSiguienteId (){  
@@ -34,11 +33,27 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
         sw.Close();
     }
 
+    //Obtener un expediente por su Id
+    //--> Lo uso en CasoDeUsoExpedienteConsultaPorId [VERIFIQUEN!!]
     public Expediente ObtenerPorId(int id)
     {
         Expediente? resultado = null;
-        //Codigo...
-
+        using var sr = new StreamReader(_nombreArch);
+        while (!sr.EndOfStream)&&(expediente.Id != id)
+        {
+            var expediente = new Expediente();
+            expediente.Id = int.Parse(sr.ReadLine() ?? "");
+            expediente.Caratula = sr.ReadLine() ?? "";
+            expediente.FechaCreacion = DateTime.Parse(sr.ReadLine() ?? "");
+            expediente.UltimaModificacion = DateTime.Parse(sr.ReadLine() ?? "");
+            expediente.IdUsuarioUltimaModificacion = int.Parse(sr.ReadLine() ?? "");
+            expediente.Estado = sr.ReadLine() ?? "";  
+            if (expediente.Id != id)
+            {
+                resultado = expediente;
+            }
+        }
+        sr.Close();
         if (resultado == null)
         {
             throw new RepositorioException($"No existe un expediente con id: {id}");
@@ -68,7 +83,7 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
     }
 
     //Obtener la lista de todos los expedientes (sin sus Tramites)
-    //--> Lo uso en CasoDeUsoExpedienteConsultaTodos 
+    //--> Lo uso en CasoDeUsoExpedienteConsultaTodos [VERIFIQUEN!!]
     public List<Expediente> ObtenerTodos()
     {
         var resultado = new List<Expediente>();
@@ -84,6 +99,7 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
             expediente.Estado = sr.ReadLine() ?? "";
             resultado.Add(expediente);
         }
+        sr.Close();
         return resultado;
     }
 
