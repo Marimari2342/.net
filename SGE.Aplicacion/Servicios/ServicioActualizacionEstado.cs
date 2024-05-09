@@ -14,4 +14,6 @@ public class ServicioActualizacionEstado
         EstadoExpediente nuevoEstado = _especificacion.ObtenerNuevoEstado(ultimoTramite.Etiqueta, expediente.Estado);
         expediente.Estado = nuevoEstado;
     }
+
+    
 }
