@@ -85,6 +85,4 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
     al expediente
     llamamos a especificaciones y que nos retorne el estado cambiado o no*/
   }
-
-
 }
