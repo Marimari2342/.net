@@ -78,4 +78,11 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
     return resultado;
   }
 
+  //Lo uso al agregar un trámite a un expediente
+  public void AgregarEtiq()
+  {
+    /*Asignar etiqueta a tramite --> mirar el ultimo tramite agregado
+    al expediente
+    llamamos a especificaciones y que nos retorne el estado cambiado o no*/
+  }
 }
