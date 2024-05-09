@@ -13,7 +13,7 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
     public int ObtenerSiguienteId (){  
         int id=0;
         if(File.Exists(_nombreArch)) { 
-          List<Expediente> list =ObtenerTodos();
+          List<Expediente> list = ObtenerTodos();
           foreach (Expediente exp in list){
             id=exp.Id;
           }
