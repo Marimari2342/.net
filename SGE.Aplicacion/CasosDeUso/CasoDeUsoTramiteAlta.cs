@@ -22,6 +22,9 @@ public class CasoDeUsoTramiteAlta(ITramiteRepositorio tramiteRepositorio)
         tramite.FechaCreacion = DateTime.Now;
         tramite.FechaModificacion = DateTime.Now;
 
+        // Agregar etiqueta tramite
+        tramite.AgregarEtiqueta = tramiteRepositorio.AgregarEtiq();
+
         // Guardar tramite en el repositorio
         tramiteRepositorio.Agregar(tramite);
     }
