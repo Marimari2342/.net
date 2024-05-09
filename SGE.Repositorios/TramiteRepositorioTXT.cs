@@ -20,6 +20,14 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
     return ++id;
   }
 
+    //Método usado después de haber realizado una eliminacion o una modificación
+    private void GuardarCambios(List<Tramite> list){
+      File.Delete(_nombreArch);
+      foreach(Tramite t in list){
+        Agregar(t);
+      }
+    }
+
   public void Agregar(Tramite t)
   {
     using var sw = new StreamWriter(_nombreArch, true);
@@ -32,7 +40,25 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
     sw.WriteLine(t.IdUsuarioUltimaModificacion);
     sw.Close();
   }
-
+  
+  //Caso de uso trámite BAJA
+  public void Eliminar(int id){
+        bool ok=false;
+        List<Tramite> lista=ListarTramites();
+        int i=0;
+        while( (i<lista.Count) && (!ok) ){
+            if(lista[i].Id == id){
+                ok=true;
+                lista.RemoveAt(i);
+                GuardarCambios(lista);
+            }
+            i++;
+        }
+        if(!ok){
+            throw new RepositorioException($"El tramite que quiere dar de baja no existe");
+        }
+  }
+  
   private List<Tramite> ListarTramites()
   {
     List<Tramite> resultado = new List<Tramite>();
@@ -77,6 +103,26 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
     sr.Close();
     return resultado;
   }
+
+    //Caso de uso trámite MODIFICACIÓN
+    public void Modificar(Tramite t){
+        bool ok=false;
+        List<Tramite> lista=ListarTramites();
+        int i=0;
+        while( (i<lista.Count) && !ok ){
+            if(lista[i].Id == t.Id){
+                ok=true;
+                t.ExpedienteId = lista[i].ExpedienteId;
+                t.FechaCreacion = lista[i].FechaCreacion;
+                lista[i]=t;
+                GuardarCambios(lista);
+            }
+            i++;
+        }
+        if(!ok){
+            throw new RepositorioException($"Eltramite con el id ingresado no existe");
+        }
+    }
 
   //Lo uso al agregar un trámite a un expediente
   public void AgregarEtiq()
