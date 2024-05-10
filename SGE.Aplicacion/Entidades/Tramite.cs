@@ -1,6 +1,6 @@
 ﻿namespace SGE.Aplicacion;
 
-public class Tramite: ITramiteRepositorio, IServicioAutorizacion
+public class Tramite: ITramiteRepositorio, IExpedienteRepositorio, IServicioAutorizacion
 {
     public int Id { get; set; } //Id del trámite (identificador numérico único)
     public int ExpedienteId { get; set; } //Id del expediente al que pertenece (identificador numérico único)
