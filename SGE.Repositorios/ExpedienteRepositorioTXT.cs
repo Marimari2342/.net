@@ -21,6 +21,15 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
         return ++id;
     }
 
+    //Método usado después de haber realizado una eliminacion o una modificación para guardar los cambios
+    private void GuardarCambios(List<Expediente> list){
+      File.Delete(_nombreArch);
+      foreach(Expediente exp in list){
+        Agregar(exp);
+      }
+    }
+
+
     public void Agregar(Expediente e)
     {
         using var sw = new StreamWriter(_nombreArch, true);
@@ -31,6 +40,24 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
         sw.WriteLine(e.IdUsuarioUltimaModificacion);
         sw.WriteLine(e.Estado);
         sw.Close();
+    }
+    
+    //Lo uso en caso de uso expediente BAJA
+    public void Eliminar(int id){
+        bool ok=false;
+        List<Expediente> lista=ObtenerTodos();
+        int i=0;
+        while( (i<lista.Count) && (!ok) ){
+            if(lista[i].Id == id){
+                ok=true;
+                lista.RemoveAt(i);
+                GuardarCambios(lista);
+            }
+            i++;
+        }
+        if(!ok){
+            throw new RepositorioException($"El expediente que quiere dar de baja no existe");
+        }
     }
 
     //Obtener un expediente por su Id
@@ -61,24 +88,22 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
         return resultado;
     }
 
-    public void Eliminar(int id)
-    {
-        bool ok = false;
-        //Codigo
-        if (!ok)
-        {
-            throw new RepositorioException($"El expediente con el id={id} no existe");
+    //Lo uso en caso de uso expediente MODIFICACION
+    public void Modificar(Expediente e){
+        bool ok=false;
+        List<Expediente> lista=ObtenerTodos();
+        int i=0;
+        while( (i<lista.Count) && !ok ){
+            if(lista[i].Id == e.Id){
+                ok=true;
+                e.FechaCreacion = lista[i].FechaCreacion;
+                lista[i]=e;
+                GuardarCambios(lista);
+            }
+            i++;
         }
-
-    }
-
-    public void Modificar(Expediente e, int id)
-    {
-        bool ok = false;
-        //Codigo
-        if (!ok)
-        {
-            throw new RepositorioException($"El expediente con el id={id} no existe");
+        if(!ok){
+            throw new RepositorioException($"El expediente con el id pedido no existe");
         }
     }
 
@@ -102,6 +127,4 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
         sr.Close();
         return resultado;
     }
-
-
 }

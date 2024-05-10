@@ -21,11 +21,8 @@ public class CasoDeUsoExpedienteAlta(IExpedienteRepositorio expedienteRepositori
     public void Ejecutar(Expediente expediente, int idUsuario)
     {
         // Verificar permisos ¿Esto será así? <--
-        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.ExpedienteAlta))
+        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario))
         {
-            throw new AutorizacionException("El usuario no tiene permiso para realizar esta operación.");
-        }
-
         // Validar expediente ¿Este tendría también que tirar una excepción? <--
         ExpedienteValidador.Validar(expediente);
 
@@ -38,5 +35,6 @@ public class CasoDeUsoExpedienteAlta(IExpedienteRepositorio expedienteRepositori
 
         // Guardar expediente en el repositorio
         _expedienteRepositorio.Agregar(expediente);
+        }
     }
 }

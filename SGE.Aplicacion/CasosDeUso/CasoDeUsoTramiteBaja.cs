@@ -7,16 +7,16 @@ public class CasoDeUsoTramiteBaja(ITramiteRepositorio tramiteRepositorio)
     public void Ejecutar(Tramite tramite, int idUsuario)
     {
         // Verificar permisos
-        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.TramiteBaja))
+        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario))
         {
-            throw new AutorizacionException("El usuario no tiene permiso para realizar esta operación.");
-        }
 
         // Validar tramite
         TramiteValidador.Validar(tramite);
 
         // Eliminar expediente en el repositorio
         _tramiteRepositorio.Eliminar(tramite);
+
+        }
 
         /* Si elimino el tramite... en algún lado tengo que cambiar 
         la etiqueta tramite a la etiqueta del tramite anterior y a su vez

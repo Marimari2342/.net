@@ -8,5 +8,5 @@ public interface IExpedienteRepositorio
     void Modificar(Expediente expediente);
     List <Expediente> ObtenerTodos();
     int ObtenerSiguienteId();
-    // Otros métodos necesarios
+    //Cambio automatico del estado de un expediente.
 }

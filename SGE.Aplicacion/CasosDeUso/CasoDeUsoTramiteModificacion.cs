@@ -6,10 +6,8 @@ public class CasoDeUsoTramiteModificacion(ITramiteRepositorio tramiteRepositorio
     public void Ejecutar(Tramite tramite, int idUsuario)
     {
         // Verificar permisos
-        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.TramiteModificacion))
-        {
-            throw new AutorizacionException("El usuario no tiene permiso para realizar esta operación.");
-        }
+        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario))
+       {
 
         // Validar tramite
         TramiteValidador.Validar(tramite);
@@ -19,5 +17,6 @@ public class CasoDeUsoTramiteModificacion(ITramiteRepositorio tramiteRepositorio
 
         // Guardar tramite en el repositorio
         _tramiteRepositorio.Modificar(tramite);
+       }
     }
 }
