@@ -125,7 +125,7 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
     }
 
 
-//Falta agregarlo a cuando modifican, eliminan y agregan un trámite... no se si agregarlo directamente en los métodos de esta clase o cuando en casos de uso llaman.
+//Falta agregarlo a cuando modifican, eliminan y agregan un trámite... 
 //FIJENSEE
 
   private void ActualizarEstado()
