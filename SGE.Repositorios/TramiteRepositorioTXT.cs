@@ -106,12 +106,15 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
 
 
   //Lo uso al agregar un trámite a un expediente
-  public void AgregarEtiq()
+  public  AgregarEtiq()
   {
     /*Asignarr etiqueta a tramite --> mirar el ultimo tramite agregado
     al expediente
     llamamos a especificaciones y que nos retorne el estado cambiado o no*/
-  }
+
+    List<Tramite> lista = ListarTramites();
+    Tramite ultimoTramite = lista[lista.Count];
+    }
 
     //Caso de uso trámite MODIFICACIÓN
     public void Modificar(Tramite t){
