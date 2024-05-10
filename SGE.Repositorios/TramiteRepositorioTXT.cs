@@ -104,6 +104,15 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
     return resultado;
   }
 
+
+  //Lo uso al agregar un trámite a un expediente
+  public void AgregarEtiq()
+  {
+    /*Asignarr etiqueta a tramite --> mirar el ultimo tramite agregado
+    al expediente
+    llamamos a especificaciones y que nos retorne el estado cambiado o no*/
+  }
+
     //Caso de uso trámite MODIFICACIÓN
     public void Modificar(Tramite t){
         bool ok=false;
@@ -158,7 +167,5 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
         Estado = EstadoExpediente.RecienIniciado;
         
     }
-}
-
-  
+  }
 }
