@@ -9,20 +9,21 @@ public class CasoDeUsoTramiteAlta(ITramiteRepositorio tramiteRepositorio)
         // Verificar permisos
         if (!_servicioAutorizacion.PoseeElPermiso(idUsuario))
         {
-        // Validar tramite
-        TramiteValidador.Validar(tramite);
+            // Validar tramite
+            TramiteValidador.Validar(tramite);
 
-        // Asignar Id [ObtenerSiguienteId() donde iría???]
-        tramite.Id = tramiteRepositorio.ObtenerSiguienteId(); //Corresponde al repositorio otorgar el Id
+            // Asignar Id [ObtenerSiguienteId() donde iría???]
+            tramite.Id = tramiteRepositorio.ObtenerSiguienteId(); //Corresponde al repositorio otorgar el Id
 
-        // Asignar fecha de creación y modificación
-        tramite.FechaCreacion = DateTime.Now;
-        tramite.FechaModificacion = DateTime.Now;
+            // Asignar fecha de creación y modificación
+            tramite.FechaCreacion = DateTime.Now;
+            tramite.FechaModificacion = DateTime.Now;
 
-        // Agregar etiqueta tramite
-        tramite.AgregarEtiqueta = tramiteRepositorio.AgregarEtiq();
+            // Agregar etiqueta tramite
+            tramite.AgregarEtiqueta = tramiteRepositorio.AgregarEtiq();
 
-        // Guardar tramite en el repositorio
-        tramiteRepositorio.Agregar(tramite);
+            // Guardar tramite en el repositorio
+            tramiteRepositorio.Agregar(tramite);
+        }
     }
 }
