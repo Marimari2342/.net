@@ -1,6 +1,6 @@
 ﻿namespace SGE.Aplicacion;
 
-public class Expediente: IExpedienteRepositorio, IServicioAutorizacion
+public class Expediente: IExpedienteRepositorio, ITramiteRepositorio, IServicioAutorizacion
 {
     public int Id { get; set; } //Id del expediente (identificador numérico único)
     public string Caratula { get; set; } //texto ingresado por el usuario, no puede estar vacío
