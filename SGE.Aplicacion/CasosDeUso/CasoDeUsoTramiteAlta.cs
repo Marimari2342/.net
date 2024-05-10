@@ -7,11 +7,8 @@ public class CasoDeUsoTramiteAlta(ITramiteRepositorio tramiteRepositorio)
     public void Ejecutar(Tramite tramite, int idUsuario)
     {
         // Verificar permisos
-        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.TramiteAlta))
+        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario))
         {
-            throw new AutorizacionException("El usuario no tiene permiso para realizar esta operación.");
-        }
-
         // Validar tramite
         TramiteValidador.Validar(tramite);
 

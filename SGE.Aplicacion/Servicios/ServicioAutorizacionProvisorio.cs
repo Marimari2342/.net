@@ -2,20 +2,17 @@
 //Servicio de autorización provisional para la primer entrega
 public class ServicioAutorizacionProvisorio : IServicioAutorizacion
 {
-    //try {
-    public bool PoseeElPermiso(int IdUsuario, Permiso permiso)
+    public bool PoseeElPermiso(int IdUsuario)
     {
-
-        // Usuario con Id 1 tiene acceso a todos los permisos
-        return IdUsuario == 1;
-
-        tienePermiso(IdUsuario);
+        bool aux;
+        if (IdUsuario != 1) {
+            //Es necesario poner aux = false? o con la excepción es suficiente.
+            throw new AutorizacionException ('El usuario no posee los permisos necesarios');
+        }
+        else {
+            Console.WriteLine("Ingreso aceptado");
+            aux = true;
+            }
     }
-    
-    /*}
-    catch (AutorizacionException e)
-    {
-        Console.WriteLine(e.Message);
-    }
-    */
+
 }

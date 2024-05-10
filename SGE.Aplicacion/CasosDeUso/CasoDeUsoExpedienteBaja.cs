@@ -17,17 +17,9 @@ public class CasoDeUsoExpedienteBaja(IExpedienteRepositorio expedienteRepositori
 {
     public void Ejecutar(int idExpediente, int idUsuario)
     {
-        // Verificar que el ID del expediente sea válido
-        if (expedienteRepositorio.ObtenerPorId(idExpediente)==null)
-        {
-            throw new RepositorioException("El expediente buscado no existe")
-        }
 
         // Verificar permisos
-        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.ExpedienteBaja))
-        {
-            throw new AutorizacionException("El usuario no tiene permiso para realizar esta operación.");
-        }
+        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario))
 
         // Eliminar expediente en el repositorio
         expedienteRepositorio.Eliminar(expediente);
