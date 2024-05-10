@@ -31,7 +31,6 @@ public class CasoDeUsoExpedienteBaja(IExpedienteRepositorio expedienteRepositori
 
         // Eliminar expediente en el repositorio
         expedienteRepositorio.Eliminar(expediente);
-
         //Al dar de baja el expediente, también doy de baja todos los trámites asociados
     }
 }

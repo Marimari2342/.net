@@ -124,11 +124,41 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
         }
     }
 
-  //Lo uso al agregar un trámite a un expediente
-  public void AgregarEtiq()
-  {
-    /*Asignar etiqueta a tramite --> mirar el ultimo tramite agregado
-    al expediente
-    llamamos a especificaciones y que nos retorne el estado cambiado o no*/
-  }
+
+//Falta agregarlo a cuando modifican, eliminan y agregan un trámite... no se si agregarlo directamente en los métodos de esta clase o cuando en casos de uso llaman.
+//FIJENSEE
+
+  private void ActualizarEstado()
+{
+    List<Tramite> lista = ListarTramites();
+    
+    if (lista.Any())
+    {
+        Tramite ultimoTramite = lista[lista.Count - 1];
+        
+        switch (ultimoTramite.Etiqueta)
+        {
+            case EtiquetaTramite.Resolucion:
+                Estado = EstadoExpediente.ConResolucion;
+                break;
+            case EtiquetaTramite.PaseAEstudio:
+                Estado = EstadoExpediente.ParaResolver;
+                break;
+            case EtiquetaTramite.PaseAlArchivo:
+                Estado = EstadoExpediente.Finalizado;
+                break;
+            default:
+                // Si el último trámite no es uno que cambie el estado, mantener el estado actual
+                break;
+        }
+    }
+    else
+    {
+        // Si no hay trámites, el estado es RecienIniciado
+        Estado = EstadoExpediente.RecienIniciado;
+        
+    }
+}
+
+  
 }

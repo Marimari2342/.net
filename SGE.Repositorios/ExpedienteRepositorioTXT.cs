@@ -127,6 +127,4 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
         sr.Close();
         return resultado;
     }
-
-
 }
