@@ -97,25 +97,39 @@ void BajaExpediente(){
   }
 }
 
-void ConsultaPorID(){
-  try{
+void ConsultaPorID()
+{
+    try
+    {
+        Console.Write("Ingrese el id del expediente que quiere consultar: ");
+        int id = int.Parse(Console.ReadLine() ?? "");
 
-    Console.Write("Ingrese el id del expediente que quiere consultar: "); int id= int.Parse(Console.ReadLine()?? "");
-    
-    IExpedienteRepositorio expedientes = new ExpedienteRepositorioTXT(); 
-    ITramiteRepositorio tramites = new TramiteRepositorioTXT();
-    var casoConsultaId = new CasoDeUsoExpedienteConsultaPorId(expedientes,tramites);
-    Expediente ex = casoConsultaId.Ejecutar(id);
-    
-    Console.WriteLine(ex);
-    foreach(Tramite t in ex.Tramites){
-      Console.WriteLine(t);
+        IExpedienteRepositorio expedientes = new ExpedienteRepositorioTXT();
+        ITramiteRepositorio tramites = new TramiteRepositorioTXT();
+        var casoConsultaId = new CasoDeUsoExpedienteConsultaPorId(expedientes, tramites);
+        Expediente ex = casoConsultaId.ConsultarConTramites(id);
+
+        if (ex != null)
+        {
+            Console.WriteLine(ex);
+            foreach (Tramite t in ex.Tramites)
+            {
+                Console.WriteLine(t);
+            }
+        }
+        else
+        {
+            Console.WriteLine("El expediente con el ID ingresado no se encontró.");
+        }
     }
-
-  }
-  catch (Exception e){
-    Console.WriteLine(e.Message);
-  }
+    catch (FormatException)
+    {
+        Console.WriteLine("Error: El valor ingresado para el ID no es válido.");
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("Error: " + e.Message);
+    }
 }
 
 void ConsultarTodosLosExpedientes(){
