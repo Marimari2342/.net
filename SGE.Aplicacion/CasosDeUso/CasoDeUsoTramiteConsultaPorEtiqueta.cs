@@ -2,7 +2,7 @@ namespace SGE.Aplicacion;
 //ya estaría??
 public class CasoDeUsoTramiteConsultaPorEtiqueta
 {
-    ITramiteRepositorio _tramiteRepositorio;
+    private ITramiteRepositorio _tramiteRepositorio;
     public CasoDeUsoTramiteConsultaPorEtiqueta(ITramiteRepositorio tramiteRepositorio)
     {
         _tramiteRepositorio = tramiteRepositorio;

@@ -2,7 +2,7 @@ namespace SGE.Aplicacion;
 
 /*TramiteBaja: Puede realizar bajas de trámites*/
 
-public class CasoDeUsoTramiteBaja(ITramiteRepositorio tramiteRepositorio)
+public class CasoDeUsoTramiteBaja
 {
     private ITramiteRepositorio _tramiteRepositorio;
     private IServicioAutorizacion _servicioAutorizacion;

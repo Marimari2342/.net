@@ -2,7 +2,7 @@ namespace SGE.Aplicacion;
 
 /*TramiteAlta: Puede realizar altas de trámites*/
 
-public class CasoDeUsoTramiteAlta(ITramiteRepositorio tramiteRepositorio)
+public class CasoDeUsoTramiteAlta
 {
     private ITramiteRepositorio _tramiteRepositorio;
     private IServicioAutorizacion _servicioAutorizacion;

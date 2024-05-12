@@ -1,6 +1,6 @@
 namespace SGE.Aplicacion;
 //Este entonces estaria???
-public class CasoDeUsoExpedienteConsultaTodos(IExpedienteRepositorio expedienteRepositorio)
+public class CasoDeUsoExpedienteConsultaTodos
 {
     private IExpedienteRepositorio _expedienteRepositorio;
     public CasoDeUsoExpedienteConsultaTodos(IExpedienteRepositorio expedienteRepositorio)
