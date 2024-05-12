@@ -36,7 +36,30 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
    public Tramite ObtenerPorId(int id)
     {
         // Aquí implementa la lógica para obtener el trámite por su ID desde el archivo de texto
-        throw new NotImplementedException(); // Reemplaza esto con la lógica real
+        Tramite resultado = new Tramite();
+        resultado.Id = -1;
+        using var sr = new StreamReader(_nombreArch,true);
+        while ((!sr.EndOfStream) && (resultado.Id == -1)){
+            var tramite = new Tramite();
+            tramite.Id = int.Parse(sr.ReadLine() ?? "");
+            if(tramite.Id == id)
+            { 
+              tramite.ExpedienteId = int.Parse(sr.ReadLine() ?? "");
+              tramite.Etiqueta=Enum.Parse<EtiquetaTramite>(sr.ReadLine()?? "");
+              tramite.Contenido= sr.ReadLine()?? "";
+              tramite.FechaCreacion=DateTime.Parse(sr.ReadLine()?? "00/00/0000");  
+              tramite.UltimaModificacion= DateTime.Parse(sr.ReadLine() ?? "00/00/0000");
+              tramite.IdUsuarioUltimaModificacion= int.Parse(sr.ReadLine()?? "");
+              resultado=tramite;
+            }
+            else{
+                for(int i=0; i<6; i++){ 
+                    sr.ReadLine();
+                }
+            }
+        }
+        sr.Close(); 
+        return resultado;  
     }
 
   //Retorno el id del tramite que se quiere dar de alta
@@ -168,6 +191,16 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
             i++;
         }
 
+    }
+    //Usado en el CasoDeUsoExpedienteBaja
+    public void EliminarTramitesPorIdExpediente(int idExpediente){
+         List<Tramite> lista = ListarTramites();
+         for(int i=0; i< lista.Count;i++){
+            if(lista[i].ExpedienteId == idExpediente){
+                lista.RemoveAt(i);
+            }
+         }
+         GuardarCambios(lista);
     }
 
 
