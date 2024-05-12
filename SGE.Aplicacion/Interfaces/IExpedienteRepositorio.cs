@@ -2,10 +2,10 @@
 
 public interface IExpedienteRepositorio
 {
-    Expediente ObtenerPorId(int id);
     void Agregar(Expediente expediente);
-    void Eliminar(int id);
-    void Modificar(Expediente expediente);
+    void Eliminar(int id, out bool ok);
+    void Modificar(Expediente expediente, out bool ok);
+    Expediente ObtenerPorId(int id);
     List <Expediente> ObtenerTodos();
     int ObtenerSiguienteId();
     //Cambio automatico del estado de un expediente.
