@@ -3,3 +3,8 @@ C:\Users\laule\seminario\.net\obj\Debug\net8.0\primerProyecto.AssemblyInfoInputs
 C:\Users\laule\seminario\.net\obj\Debug\net8.0\primerProyecto.AssemblyInfo.cs
 C:\Users\laule\seminario\.net\obj\Debug\net8.0\primerProyecto.csproj.CoreCompileInputs.cache
 C:\Users\laule\seminario\.net\obj\Debug\net8.0\primerProyecto.sourcelink.json
+C:\Users\Usuario\proyectosDotnet\primerProyecto\obj\Debug\net8.0\primerProyecto.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\proyectosDotnet\primerProyecto\obj\Debug\net8.0\primerProyecto.AssemblyInfoInputs.cache
+C:\Users\Usuario\proyectosDotnet\primerProyecto\obj\Debug\net8.0\primerProyecto.AssemblyInfo.cs
+C:\Users\Usuario\proyectosDotnet\primerProyecto\obj\Debug\net8.0\primerProyecto.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\proyectosDotnet\primerProyecto\obj\Debug\net8.0\primerProyecto.sourcelink.json
