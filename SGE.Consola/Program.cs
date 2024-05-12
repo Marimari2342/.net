@@ -224,10 +224,10 @@ void ModificarTramite(){
     Console.WriteLine("Ingrese los siguientes datos para poder modificar un trámite: ");
     Console.Write("Ingrese su id de usuario: "); string idUsuario=Console.ReadLine()?? "";
     Console.Write("Ingrese el id del tramite que desea modificar: "); t.Id = int.Parse(Console.ReadLine()?? "");
-    //El usuario puede modificar la etiqueta?
     Console.Write("Nueva etiqueta: "); t.Etiqueta = Enum.Parse<EtiquetaTramite>(Console.ReadLine() ?? "");
     Console.Write("Nuevo contenido: "); t.Contenido = Console.ReadLine();
     int idu=int.Parse(idUsuario);
+    
     ITramiteRepositorio tramiteRepo= new TramiteRepositorioTXT();
     IExpedienteRepositorio expedienteRepo = new ExpedienteRepositorioTXT();
     IEspecificacionCambioEstado especificacion = new EspecificacionCambioEstado();
