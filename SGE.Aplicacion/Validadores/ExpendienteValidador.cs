@@ -2,6 +2,9 @@
 
 public class ExpendienteValidador
 {
+    
+    public  ExpendienteValidador(){}
+
     public bool Validar(Expediente expediente)
     {
         // Validar que la carátula del expediente no esté vacía

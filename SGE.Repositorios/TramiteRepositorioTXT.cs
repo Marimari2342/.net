@@ -5,6 +5,18 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
 {
   readonly string _nombreArch = "tramites.txt";
 
+ public List<Tramite> ListarPorIdExpediente(int idExpediente)
+    {
+        // Aquí implementa la lógica para listar los trámites por el ID del expediente desde el archivo de texto
+        throw new NotImplementedException(); // Reemplaza esto con la lógica real
+    }
+
+   public Tramite ObtenerPorId(int id)
+    {
+        // Aquí implementa la lógica para obtener el trámite por su ID desde el archivo de texto
+        throw new NotImplementedException(); // Reemplaza esto con la lógica real
+    }
+
   //Retorno el id del tramite que se quiere dar de alta
   public int ObtenerSiguienteId()
   {

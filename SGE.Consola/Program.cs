@@ -66,8 +66,9 @@ void AltaExpediente(){
 
     IExpedienteRepositorio expRepo= new ExpedienteRepositorioTXT();
     IServicioAutorizacion autoProvisoria= new ServicioAutorizacionProvisorio(); 
+    ExpedienteValidador expedienteValidador = new ExpedienteValidador();
 
-    var casoAlta = new CasoDeUsoExpedienteAlta(expRepo, autoProvisoria);
+    var casoAlta = new CasoDeUsoExpedienteAlta(expRepo,expedienteValidador,autoProvisoria);
     casoAlta.Ejecutar(e,idUsuario);
     Console.WriteLine("EL expediente fue agregado correctamente.");
     

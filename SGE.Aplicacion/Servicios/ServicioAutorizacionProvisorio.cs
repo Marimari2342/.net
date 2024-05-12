@@ -1,4 +1,5 @@
 ﻿namespace SGE.Aplicacion;
+
 //Servicio de autorización provisional para la primer entrega
 public class ServicioAutorizacionProvisorio : IServicioAutorizacion
 {

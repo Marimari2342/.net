@@ -1,4 +1,7 @@
 ﻿namespace SGE.Aplicacion;
+using SGE.Aplicacion.ExpedienteValidador;
+// Importar el espacio de nombres donde se encuentra ExpedienteValidador
+
 
 /*
 ExpedienteAlta: Puede realizar altas de expedientes
@@ -16,16 +19,18 @@ Chequear que no se intenta acceder a un repos que no existe
 En los casos uso try catch o como?
 */
 
-public class CasoDeUsoExpedienteAlta
+public class CasoDeUsoExpedienteAlta 
 {
 
         private IExpedienteRepositorio _expedienteRepositorio;
         private IServicioAutorizacion _servicioAutorizacion;
 
-        public CasoDeUsoExpedienteAlta(IExpedienteRepositorio expedienteRepositorio, IServicioAutorizacion servicioAutorizacion)
+        private ExpedienteValidador _expedienteValidador;
+        public CasoDeUsoExpedienteAlta(IExpedienteRepositorio expedienteRepositorio, ExpedienteValidador expedienteValidador, IServicioAutorizacion servicioAutorizacion)
         {
             _expedienteRepositorio = expedienteRepositorio;
             _servicioAutorizacion = servicioAutorizacion;
+            _expedienteValidador = expedienteValidador;
         }
     public void Ejecutar(Expediente expediente, int idUsuario)
     {
@@ -33,6 +38,7 @@ public class CasoDeUsoExpedienteAlta
         if (!_servicioAutorizacion.PoseeElPermiso(idUsuario))
         {
         // Validar expediente ¿Este tendría también que tirar una excepción? <--
+
         ExpedienteValidador.Validar(expediente);
 
         // Asignar Id
