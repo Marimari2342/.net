@@ -41,9 +41,9 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
     }
     
     //Lo uso en caso de uso expediente BAJA
-    public void Eliminar(int id){
-        bool ok=false;
-        List<Expediente> lista=ObtenerTodos();
+    public void Eliminar(int id, out bool ok){
+        ok=false;
+        List<Expediente> lista = ObtenerTodos();
         int i=0;
         while( (i<lista.Count) && (!ok) ){
             if(lista[i].Id == id){
@@ -53,55 +53,51 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
             }
             i++;
         }
-        if(!ok){
-            throw new RepositorioException($"El expediente que quiere dar de baja no existe");
-        }
     }
 
     //Obtener un expediente por su Id
     //--> Lo uso en CasoDeUsoExpedienteConsultaPorId [VERIFIQUEN!!]
     public Expediente ObtenerPorId(int id)
     {
-        Expediente? resultado = null;
-        using var sr = new StreamReader(_nombreArch);
-        while (!sr.EndOfStream & (expediente.Id != id))
-        {
+        Expediente resultado = new Expediente();
+        resultado.Id = -1;
+        using var sr = new StreamReader(_nombreArch,true);
+        while (!sr.EndOfStream && resultado.Id == -1){
             var expediente = new Expediente();
             expediente.Id = int.Parse(sr.ReadLine() ?? "");
-            expediente.Caratula = sr.ReadLine() ?? "";
-            expediente.FechaCreacion = DateTime.Parse(sr.ReadLine() ?? "");
-            expediente.UltimaModificacion = DateTime.Parse(sr.ReadLine() ?? "");
-            expediente.IdUsuarioUltimaModificacion = int.Parse(sr.ReadLine() ?? "");
-            expediente.Estado = sr.ReadLine() ?? "";  
-            if (expediente.Id != id)
-            {
-                resultado = expediente;
+            if(expediente.Id == id)
+            { 
+              expediente.Caratula = sr.ReadLine()?? "";
+              expediente.FechaCreacion=DateTime.Parse(sr.ReadLine()?? "00/00/0000");  
+              expediente.UltimaModificacion= DateTime.Parse(sr.ReadLine() ?? "00/00/0000");
+              expediente. IdUsuarioUltimaModificacion= int.Parse(sr.ReadLine()?? "");
+              expediente.Estado=Enum.Parse<EstadoExpediente>(sr.ReadLine()?? "");
+              resultado=expediente;
+            }
+            else{
+                for(int i=0; i<5; i++){ 
+                    sr.ReadLine();
+                }
             }
         }
         sr.Close();
-        if (resultado == null)
-        {
-            throw new RepositorioException($"No existe un expediente con id: {id}");
-        }
         return resultado;
     }
 
     //Lo uso en caso de uso expediente MODIFICACION
-    public void Modificar(Expediente e){
-        bool ok=false;
+    public void Modificar(Expediente e,out bool ok){
+        ok=false;
         List<Expediente> lista=ObtenerTodos();
         int i=0;
         while( (i<lista.Count) && !ok ){
             if(lista[i].Id == e.Id){
                 ok=true;
                 e.FechaCreacion = lista[i].FechaCreacion;
+                e.Estado = lista[i].Estado;
                 lista[i]=e;
                 GuardarCambios(lista);
             }
             i++;
-        }
-        if(!ok){
-            throw new RepositorioException($"El expediente con el id pedido no existe");
         }
     }
 
