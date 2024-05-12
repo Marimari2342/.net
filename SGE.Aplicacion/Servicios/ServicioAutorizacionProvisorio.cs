@@ -4,15 +4,17 @@ public class ServicioAutorizacionProvisorio : IServicioAutorizacion
 {
     public bool PoseeElPermiso(int IdUsuario)
     {
-        bool aux;
-        if (IdUsuario != 1) {
-            //Es necesario poner aux = false? o con la excepción es suficiente.
-            throw new AutorizacionException ('El usuario no posee los permisos necesarios');
-        }
-        else {
-            Console.WriteLine("Ingreso aceptado");
-            aux = true;
-            }
+    bool aux;
+    if (IdUsuario != 1) {
+        // Lanzar la excepción con el mensaje adecuado
+        throw new AutorizacionException("El usuario no posee los permisos necesarios");
     }
+    else {
+        Console.WriteLine("Ingreso aceptado");
+        aux = true;
+    }
+    return aux; // Asegúrate de devolver el valor auxiliar en todos los casos
+    }
+
 
 }

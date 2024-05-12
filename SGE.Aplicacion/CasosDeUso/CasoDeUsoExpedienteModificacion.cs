@@ -22,7 +22,7 @@ public class CasoDeUsoExpedienteModificacion(IExpedienteRepositorio expedienteRe
          ExpedienteValidador.Validar(expediente);
         // Asignar fecha de modificación
          expediente.FechaModificacion = DateTime.Now;
-         expedienteRepositorio.Modificar(expediente e);
+         expedienteRepositorio.Modificar(expediente);
         }
     }
 }
