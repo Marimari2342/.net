@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {}
+    "C:\\Users\\laule\\seminario\\.net\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {
+    "C:\\Users\\laule\\seminario\\.net\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\SGE.Aplicacion\\SGE.Aplicacion.csproj",
+        "projectUniqueName": "C:\\Users\\laule\\seminario\\.net\\SGE.Aplicacion\\SGE.Aplicacion.csproj",
         "projectName": "SGE.Aplicacion",
-        "projectPath": "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\SGE.Aplicacion\\SGE.Aplicacion.csproj",
-        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\SGE.Aplicacion\\obj\\",
+        "projectPath": "C:\\Users\\laule\\seminario\\.net\\SGE.Aplicacion\\SGE.Aplicacion.csproj",
+        "packagesPath": "C:\\Users\\laule\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\laule\\seminario\\.net\\SGE.Aplicacion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\laule\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"

@@ -13,8 +13,18 @@ Id del usuario como parámetro.
 Al dar de baja el expediente, también doy de baja todos los trámites
 asociados*/
 
-public class CasoDeUsoExpedienteBaja(IExpedienteRepositorio expedienteRepositorio)
+public class CasoDeUsoExpedienteBaja
 {
+        private readonly IExpedienteRepositorio _expedienteRepositorio;
+        private readonly IServicioAutorizacion _servicioAutorizacion;
+        private readonly ITramiteRepositorio _tramiteRepositorio;
+
+        public CasoDeUsoExpedienteBaja(IExpedienteRepositorio expedienteRepositorio, IServicioAutorizacion servicioAutorizacion, ITramiteRepositorio tramiteRepositorio)
+        {
+            _expedienteRepositorio = expedienteRepositorio;
+            _servicioAutorizacion = servicioAutorizacion;
+            _tramiteRepositorio = tramiteRepositorio;
+        }
     public void Ejecutar(int idExpediente, int idUsuario)
     {
 

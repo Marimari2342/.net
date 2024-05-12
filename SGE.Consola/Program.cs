@@ -2,7 +2,7 @@ using SGE.Aplicacion;
 using SGE.Repositorios;
 
 //Menú
-bool fin=false; 
+/*bool fin=false; 
 string? option;
 while( !fin ){ 
   Console.WriteLine("MENÚ:");
@@ -55,11 +55,11 @@ while( !fin ){
       break;
   }
 }
-
+*/
 void AltaExpediente(){
   try{ 
 
-    Expediente e=new Expediente();
+    Expediente e = new Expediente();
     Console.WriteLine("Ingrese los siguientes datos para poder dar de alta al expediente: ");
     Console.Write("Ingrese su id de usuario: "); int idUsuario=int.Parse(Console.ReadLine()?? "");
     Console.Write("Carátula del expediente: "); e.Caratula = Console.ReadLine();
@@ -67,15 +67,16 @@ void AltaExpediente(){
     IExpedienteRepositorio expRepo= new ExpedienteRepositorioTXT();
     IServicioAutorizacion autoProvisoria= new ServicioAutorizacionProvisorio(); 
 
-    var casoAlta= new CasoDeUsoExpedienteAlta(expRepo, autoProvisoria);
+    var casoAlta = new CasoDeUsoExpedienteAlta(expRepo, autoProvisoria);
     casoAlta.Ejecutar(e,idUsuario);
     Console.WriteLine("EL expediente fue agregado correctamente.");
+    
   }
   catch(Exception msj){
     Console.WriteLine(msj.Message);
   }
 }
-
+/*
 void BajaExpediente(){
   try{  
 
@@ -244,3 +245,4 @@ void ModificarTramite(){
   catch(Exception msj){
     Console.WriteLine(msj.Message);
   }
+*/

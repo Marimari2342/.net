@@ -7,13 +7,22 @@ Id del usuario como parámetro.*/
 
 public class CasoDeUsoExpedienteModificacion(IExpedienteRepositorio expedienteRepositorio)
 {
+    private readonly IExpedienteRepositorio _expedienteRepositorio;
+    private readonly IServicioAutorizacion _servicioAutorizacion;
+
+    public CasoDeUsoExpedienteModificacion(IExpedienteRepositorio expedienteRepositorio, IServicioAutorizacion servicioAutorizacion)
+    {
+        _expedienteRepositorio = expedienteRepositorio;
+         _servicioAutorizacion = servicioAutorizacion;
+    }
+
     public void Ejecutar(Expediente expediente, int idUsuario)
     {
         if (!_servicioAutorizacion.PoseeElPermiso(idUsuario)){
          ExpedienteValidador.Validar(expediente);
         // Asignar fecha de modificación
          expediente.FechaModificacion = DateTime.Now;
-         expedienteRepositorio.Modificar(expediente e)
+         expedienteRepositorio.Modificar(expediente e);
         }
     }
 }

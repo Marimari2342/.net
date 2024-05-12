@@ -46,19 +46,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
+    "C:\\Users\\laule\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\SGE.Consola\\SGE.Consola.csproj",
+      "projectUniqueName": "C:\\Users\\laule\\seminario\\.net\\SGE.Consola\\SGE.Consola.csproj",
       "projectName": "SGE.Consola",
-      "projectPath": "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\SGE.Consola\\SGE.Consola.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\SGE.Consola\\obj\\",
+      "projectPath": "C:\\Users\\laule\\seminario\\.net\\SGE.Consola\\SGE.Consola.csproj",
+      "packagesPath": "C:\\Users\\laule\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\laule\\seminario\\.net\\SGE.Consola\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\laule\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -70,11 +70,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {
-              "projectPath": "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\SGE.Aplicacion\\SGE.Aplicacion.csproj"
+            "C:\\Users\\laule\\seminario\\.net\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {
+              "projectPath": "C:\\Users\\laule\\seminario\\.net\\SGE.Aplicacion\\SGE.Aplicacion.csproj"
             },
-            "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\SGE.Repositorios\\SGE.Repositorios.csproj": {
-              "projectPath": "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\SGE.Repositorios\\SGE.Repositorios.csproj"
+            "C:\\Users\\laule\\seminario\\.net\\SGE.Repositorios\\SGE.Repositorios.csproj": {
+              "projectPath": "C:\\Users\\laule\\seminario\\.net\\SGE.Repositorios\\SGE.Repositorios.csproj"
             }
           }
         }

@@ -4,6 +4,13 @@ namespace SGE.Aplicacion;
 
 public class CasoDeUsoTramiteBaja(ITramiteRepositorio tramiteRepositorio)
 {
+    private readonly ITramiteRepositorio _tramiteRepositorio;
+    private readonly IServicioAutorizacion _servicioAutorizacion;
+    public CasoDeUsoTramiteBaja(ITramiteRepositorio tramiteRepositorio, IServicioAutorizacion servicioAutorizacion)
+    {
+        _tramiteRepositorio = tramiteRepositorio;
+        _servicioAutorizacion = servicioAutorizacion;
+    }
     public void Ejecutar(Tramite tramite, int idUsuario)
     {
         // Verificar permisos
