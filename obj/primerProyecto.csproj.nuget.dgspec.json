@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\laule\\seminario\\.net\\primerProyecto.csproj": {}
+    "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\primerProyecto.csproj": {}
   },
   "projects": {
-    "C:\\Users\\laule\\seminario\\.net\\primerProyecto.csproj": {
+    "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\primerProyecto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\laule\\seminario\\.net\\primerProyecto.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\primerProyecto.csproj",
         "projectName": "primerProyecto",
-        "projectPath": "C:\\Users\\laule\\seminario\\.net\\primerProyecto.csproj",
-        "packagesPath": "C:\\Users\\laule\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\laule\\seminario\\.net\\obj\\",
+        "projectPath": "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\primerProyecto.csproj",
+        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Usuario\\proyectosDotnet\\primerProyecto\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\laule\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
