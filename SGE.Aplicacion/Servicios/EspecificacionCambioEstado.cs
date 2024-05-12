@@ -1,8 +1,8 @@
-﻿namespace SGE.Aplicacion;
+namespace SGE.Aplicacion;
 
 public class EspecificacionCambioEstado
 {
-    public EstadoExpediente ObtenerNuevoEstado(EtiquetaTramite etiquetaTramite, EstadoExpediente estadoActual)
+     public EstadoExpediente ObtenerNuevoEstado(EtiquetaTramite etiquetaTramite, EstadoExpediente estadoActual)
     {
         switch (etiquetaTramite)
         {
@@ -16,4 +16,4 @@ public class EspecificacionCambioEstado
                 return estadoActual; // No se produce cambio de estado
         }
     }
-}       
+}

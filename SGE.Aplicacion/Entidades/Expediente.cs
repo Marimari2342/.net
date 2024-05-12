@@ -8,7 +8,7 @@ public class Expediente: IExpedienteRepositorio, ITramiteRepositorio, IServicioA
     public DateTime UltimaModificacion { get; set; } //fecha de ultima modificación, cada vez que modifico, cambia
     public int IdUsuarioUltimaModificacion { get; set; } //identificacion del ultimo usuario que modificó el expediente
     public EstadoExpediente Estado { get; set; } //posibles valores enumerativos = EstadoExpediente
-    public List<Tramite> tramites { get; set } //lista de los tramites del expediente
+    public List<Tramite> tramites { get; set; } //lista de los tramites del expediente
 
 public override string ToString()
     {
