@@ -9,9 +9,11 @@ public class CasoDeUsoExpedienteModificacion(IExpedienteRepositorio expedienteRe
 {
     public void Ejecutar(Expediente expediente, int idUsuario)
     {
-
+        if (!_servicioAutorizacion.PoseeElPermiso(idUsuario)){
+         ExpedienteValidador.Validar(expediente);
         // Asignar fecha de modificación
-        expediente.FechaModificacion = DateTime.Now;
-        expedienteRepositorio.Modificar(expediente e)
+         expediente.FechaModificacion = DateTime.Now;
+         expedienteRepositorio.Modificar(expediente e)
+        }
     }
 }

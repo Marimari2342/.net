@@ -8,15 +8,13 @@ public class CasoDeUsoTramiteModificacion(ITramiteRepositorio tramiteRepositorio
         // Verificar permisos
         if (!_servicioAutorizacion.PoseeElPermiso(idUsuario))
        {
-
         // Validar tramite
         TramiteValidador.Validar(tramite);
-
         // Asignar fecha de modificación
         tramite.FechaModificacion = DateTime.Now;
-
         // Guardar tramite en el repositorio
         _tramiteRepositorio.Modificar(tramite);
+
        }
     }
 }
