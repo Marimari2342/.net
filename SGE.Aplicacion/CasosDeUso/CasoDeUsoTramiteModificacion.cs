@@ -1,8 +1,7 @@
 namespace SGE.Aplicacion;
 
 /*TramiteModificacion: Puede realizar modificaciones de trámites*/
-public class CasoDeUsoTramiteModificacion(ITramiteRepositorio tramiteRepositorio)
-{
+public class CasoDeUsoTramiteModificacion
     private ITramiteRepositorio _tramiteRepositorio;
     private IServicioAutorizacion _servicioAutorizacion;
     public CasoDeUsoTramiteModificacion(ITramiteRepositorio tramiteRepositorio, IServicioAutorizacion servicioAutorizacion)

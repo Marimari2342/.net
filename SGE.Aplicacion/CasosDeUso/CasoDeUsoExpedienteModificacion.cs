@@ -5,7 +5,7 @@ Se debe garantizar que para las operaciones de alta, baja y modificación se ver
 usuario antes de proceder. Por lo tanto, el método Ejecutar de estos casos de uso deberá recibir también el
 Id del usuario como parámetro.*/
 
-public class CasoDeUsoExpedienteModificacion(IExpedienteRepositorio expedienteRepositorio)
+public class CasoDeUsoExpedienteModificacion
 {
     private IExpedienteRepositorio _expedienteRepositorio;
     private IServicioAutorizacion _servicioAutorizacion;
