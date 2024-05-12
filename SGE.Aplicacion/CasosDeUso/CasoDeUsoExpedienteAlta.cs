@@ -19,8 +19,8 @@ En los casos uso try catch o como?
 public class CasoDeUsoExpedienteAlta
 {
 
-        private readonly IExpedienteRepositorio _expedienteRepositorio;
-        private readonly IServicioAutorizacion _servicioAutorizacion;
+        IExpedienteRepositorio _expedienteRepositorio;
+        IServicioAutorizacion _servicioAutorizacion;
 
         public CasoDeUsoExpedienteAlta(IExpedienteRepositorio expedienteRepositorio, IServicioAutorizacion servicioAutorizacion)
         {

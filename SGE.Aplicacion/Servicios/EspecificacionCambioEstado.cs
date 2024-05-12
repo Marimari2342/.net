@@ -1,4 +1,4 @@
-﻿namespace SGE.Aplicacion;
+namespace SGE.Aplicacion;
 
 public class EspecificacionCambioEstado
 {
@@ -16,4 +16,4 @@ public class EspecificacionCambioEstado
                 return estadoActual; // No se produce cambio de estado
         }
     }
-}       
+}

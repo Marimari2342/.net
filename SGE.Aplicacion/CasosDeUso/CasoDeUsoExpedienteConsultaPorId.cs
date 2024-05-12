@@ -2,28 +2,29 @@
 
 public class CasoDeUsoExpedienteConsultaPorId
 {
-        private readonly IExpedienteRepositorio _expedienteRepositorio;
-        private readonly ITramiteRepositorio _tramiteRepositorio;
+    IExpedienteRepositorio _expedienteRepositorio;
+    ITramiteRepositorio _tramiteRepositorio;
 
-        public CasoDeUsoExpedienteConsultaPorId(IExpedienteRepositorio expedienteRepositorio, ITramiteRepositorio tramiteRepositorio)
-        {
-            _expedienteRepositorio = expedienteRepositorio;
-            _tramiteRepositorio = tramiteRepositorio;
-        }
+    public CasoDeUsoExpedienteConsultaPorId(IExpedienteRepositorio expedienteRepositorio, ITramiteRepositorio tramiteRepositorio)
+    {
+        _expedienteRepositorio = expedienteRepositorio;
+        _tramiteRepositorio = tramiteRepositorio;
+    }
     /*permite la consulta de un expediente junto con todos sus 
     trámites, utilizando el Id del expediente como referencia
     (devolverá tipo una lista del expediente y sus trámites)*/
    public Expediente ConsultarConTramites(int idExpediente)
     {
-    // Obtener expediente
-    Expediente expediente = _expedienteRepositorio.ObtenerPorId(idExpediente);
+        // Obtener expediente
+        Expediente expediente = expedienteRepositorio.ObtenerPorId(idExpediente);
 
-    // Obtener trámites asociados al expediente
-    List<Tramite> tramites = _tramiteRepositorio.ListarPorIdExpediente(idExpediente);
-    
-    // Asignar los trámites al expediente
-    expediente.Tramites = tramites;
+        // Obtener trámites asociados al expediente
+        public List<Tramite> Ejecutar()
+        {
+            /*lista todos los trámites del expediente cuyo Id es el pasado como 
+            parámetro --> */
+            return tramiteRepositorio.ListarPorIdExpediente(idExpediente);
+        }
 
-    return expediente;
     }
 }
