@@ -15,9 +15,9 @@ asociados*/
 
 public class CasoDeUsoExpedienteBaja
 {
-        private readonly IExpedienteRepositorio _expedienteRepositorio;
-        private readonly IServicioAutorizacion _servicioAutorizacion;
-        private readonly ITramiteRepositorio _tramiteRepositorio;
+        IExpedienteRepositorio _expedienteRepositorio;
+        IServicioAutorizacion _servicioAutorizacion;
+        ITramiteRepositorio _tramiteRepositorio;
 
         public CasoDeUsoExpedienteBaja(IExpedienteRepositorio expedienteRepositorio, IServicioAutorizacion servicioAutorizacion, ITramiteRepositorio tramiteRepositorio)
         {

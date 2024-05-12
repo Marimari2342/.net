@@ -4,8 +4,8 @@ namespace SGE.Aplicacion;
 
 public class CasoDeUsoTramiteAlta(ITramiteRepositorio tramiteRepositorio)
 {
-    private readonly ITramiteRepositorio _tramiteRepositorio;
-    private readonly IServicioAutorizacion _servicioAutorizacion;
+    ITramiteRepositorio _tramiteRepositorio;
+    IServicioAutorizacion _servicioAutorizacion;
     public CasoDeUsoTramiteAlta(ITramiteRepositorio tramiteRepositorio, IServicioAutorizacion servicioAutorizacion)
     {
         _tramiteRepositorio = tramiteRepositorio;

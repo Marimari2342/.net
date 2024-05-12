@@ -2,7 +2,7 @@
 
 public class EspecificacionCambioEstado
 {
-     public EstadoExpediente ObtenerNuevoEstado(EtiquetaTramite etiquetaTramite, EstadoExpediente estadoActual)
+    public EstadoExpediente ObtenerNuevoEstado(EtiquetaTramite etiquetaTramite, EstadoExpediente estadoActual)
     {
         switch (etiquetaTramite)
         {
