@@ -93,7 +93,6 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
             if(lista[i].Id == e.Id){
                 ok=true;
                 e.FechaCreacion = lista[i].FechaCreacion;
-                e.Estado = lista[i].Estado;
                 lista[i]=e;
                 GuardarCambios(lista);
             }
