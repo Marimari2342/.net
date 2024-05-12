@@ -7,8 +7,8 @@ Id del usuario como parámetro.*/
 
 public class CasoDeUsoExpedienteModificacion(IExpedienteRepositorio expedienteRepositorio)
 {
-    IExpedienteRepositorio _expedienteRepositorio;
-    IServicioAutorizacion _servicioAutorizacion;
+    private IExpedienteRepositorio _expedienteRepositorio;
+    private IServicioAutorizacion _servicioAutorizacion;
 
     public CasoDeUsoExpedienteModificacion(IExpedienteRepositorio expedienteRepositorio, IServicioAutorizacion servicioAutorizacion)
     {

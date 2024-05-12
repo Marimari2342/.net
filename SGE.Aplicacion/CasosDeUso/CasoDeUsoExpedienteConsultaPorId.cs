@@ -2,8 +2,8 @@
 
 public class CasoDeUsoExpedienteConsultaPorId
 {
-    IExpedienteRepositorio _expedienteRepositorio;
-    ITramiteRepositorio _tramiteRepositorio;
+    private IExpedienteRepositorio _expedienteRepositorio;
+    private ITramiteRepositorio _tramiteRepositorio;
 
     public CasoDeUsoExpedienteConsultaPorId(IExpedienteRepositorio expedienteRepositorio, ITramiteRepositorio tramiteRepositorio)
     {
