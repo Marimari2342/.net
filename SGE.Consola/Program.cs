@@ -13,7 +13,7 @@ while( !fin ){
   Console.WriteLine("Ingrese 5 si quiere MODIFICAR un expediente.");
   Console.WriteLine("Ingrese 6 si quiere dar de ALTA un trámite.");
   Console.WriteLine("Ingrese 7 si quiere dar de BAJA un trámite.");
-  Console.WriteLine("Ingrese 8 si quiere consultar todos los trámites de una etiqueta específica.");
+  Console.WriteLine("Ingrese 8 si quiere consultar todos los trámites con una etiqueta específica.");
   Console.WriteLine("Ingrese 9 si quiere MODIFICAR un trámite.");
   Console.WriteLine("Ingrese 10 para cerrar el menú");
   Console.Write("Opción: "); option = Console.ReadLine();
@@ -61,17 +61,15 @@ void AltaExpediente(){
 
     Expediente e=new Expediente();
     Console.WriteLine("Ingrese los siguientes datos para poder dar de alta al expediente: ");
-    Console.Write("Ingrese su id de usuario: "); string idUsuario=Console.ReadLine()?? "";
+    Console.Write("Ingrese su id de usuario: "); int idUsuario=int.Parse(Console.ReadLine()?? "");
     Console.Write("Carátula del expediente: "); e.Caratula = Console.ReadLine();
-    int idu=int.Parse(idUsuario);
+
     IExpedienteRepositorio expRepo= new ExpedienteRepositorioTXT();
     IServicioAutorizacion autoProvisoria= new ServicioAutorizacionProvisorio(); 
+
     var casoAlta= new CasoDeUsoExpedienteAlta(expRepo, autoProvisoria);
-    casoAlta.Ejecutar(e,idu);
-    
-  }
-  catch (ValidacionException msj){
-    Console.WriteLine(msj.Message);
+    casoAlta.Ejecutar(e,idUsuario);
+    Console.WriteLine("EL expediente fue agregado correctamente.");
   }
   catch(Exception msj){
     Console.WriteLine(msj.Message);
@@ -80,16 +78,18 @@ void AltaExpediente(){
 
 void BajaExpediente(){
   try{  
+
   Console.WriteLine("Ingrese los siguientes datos para poder dar de baja al expediente: ");
-  Console.Write("Ingrese su id de usuario: "); string idUsuario=Console.ReadLine() ?? "";
-  Console.Write("Ingrese id del expediente que desea dar de baja: "); string idExpediente= Console.ReadLine()??"";
-  int idu=int.Parse(idUsuario);
-  int ide=int.Parse(idExpediente);
+  Console.Write("Ingrese su id de usuario: "); int idUsuario=int.Parse(Console.ReadLine() ?? "");
+  Console.Write("Ingrese id del expediente que desea dar de baja: "); int idExpediente= int.Parse(Console.ReadLine()??"");
+
   IExpedienteRepositorio expRepo= new ExpedienteRepositorioTXT();
   ITramiteRepositorio traRepo= new TramiteRepositorioTXT();
   IServicioAutorizacion autoProvisoria= new ServicioAutorizacionProvisorio(); 
   var casoBaja= new CasoDeUsoExpedienteBaja(autoProvisoria,expRepo,traRepo);
-  casoBaja.Ejecutar(ide,idu);
+
+  casoBaja.Ejecutar(idExpediente,idUsuario);
+  Console.WriteLine($"El expediente con id {idExpediente} fue eliminado.");
   }
   catch(Exception e){
     Console.WriteLine(e.Message);
@@ -97,18 +97,24 @@ void BajaExpediente(){
 }
 
 void ConsultaPorID(){
- //No está completo porque falta la lista con todos los trámites del expediente consultado
   try{
+
     Console.Write("Ingrese el id del expediente que quiere consultar: "); int id= int.Parse(Console.ReadLine()?? "");
+    
     IExpedienteRepositorio expedientes = new ExpedienteRepositorioTXT(); 
-    var casoConsultaId = new CasoDeUsoExpedienteConsultaPorId(expedientes);
-    Expediente E = casoConsultaId.Ejecutar(id);
-    Console.WriteLine(E);
+    ITramiteRepositorio tramites = new TramiteRepositorioTXT();
+    var casoConsultaId = new CasoDeUsoExpedienteConsultaPorId(expedientes,tramites);
+    Expediente ex = casoConsultaId.Ejecutar(id);
+    
+    Console.WriteLine(ex);
+    foreach(Tramite t in ex.Tramites){
+      Console.WriteLine(t);
+    }
+
   }
-  catch (RepositorioException e){
+  catch (Exception e){
     Console.WriteLine(e.Message);
   }
-
 }
 
 void ConsultarTodosLosExpedientes(){
@@ -122,18 +128,18 @@ void ConsultarTodosLosExpedientes(){
 
 void ModificarExpediente () {
   try{  
-    Console.WriteLine("Ingrese los siguientes datos para poder dar modificar el expediente: ");
-    Console.Write("Ingrese su id de usuario: "); string idUsuario=Console.ReadLine()?? "";
-    Expediente exp = new Expediente();
-    Console.Write("Ingrese el id del expediente que desea modificar: "); exp.Id = int.Parse(Console.ReadLine()?? "");
-    Console.Write("Ingrese la nueva caratula: "); exp.Caratula=Console.ReadLine();
-    //El usuario puede modificar el estado?
-    Console.Write("Ingrese el estado: ");exp.Estado = Enum.Parse<EstadoExpediente>(Console.ReadLine() ?? ""); 
-    int idu=int.Parse(idUsuario);
-    IExpedienteRepositorio expRepo= new ExpedienteRepositorioTXT();
-    IServicioAutorizacion autoProvisoria= new ServicioAutorizacionProvisorio(); 
-    var casoModificar= new CasoDeUsoExpedienteModificacion(expRepo, autoProvisoria);
-    casoModificar.Ejecutar(exp,idu);
+    Console.WriteLine("Ingrese los siguientes datos para poder modificar el expediente: ");
+    Console.Write("Ingrese su id de usuario: "); int idUsuario=int.Parse(Console.ReadLine()?? "");
+    Expediente expediente = new Expediente();
+    Console.Write("Ingrese el id del expediente que desea modificar: "); expediente.Id = int.Parse(Console.ReadLine()?? "");
+    Console.Write("Ingrese la nueva caratula: "); expediente.Caratula=Console.ReadLine();
+    
+    IExpedienteRepositorio expedienteRepo= new ExpedienteRepositorioTXT();
+    IServicioAutorizacion autorizacionProvisoria= new ServicioAutorizacionProvisorio(); 
+    var casoModificar= new CasoDeUsoExpedienteModificacion(expedienteRepo, autorizacionProvisoria);
+
+    casoModificar.Ejecutar(expediente,idUsuario);
+    Console.WriteLine($"El expediente con id {expediente.Id} fue modificado.");
   }
   catch(Exception e){
     Console.WriteLine(e.Message);
@@ -144,20 +150,22 @@ void AltaTramite(){
   try{
     Tramite t=new Tramite();
     Console.WriteLine("Ingrese los siguientes datos para poder dar de alta al trámite: ");
-    Console.Write("Ingrese su id de usuario: "); string idUsuario=Console.ReadLine()?? "";
+    Console.Write("Ingrese su id de usuario: "); int idUsuario=int.Parse(Console.ReadLine()?? "");
     Console.Write("Ingrese el id del expediente al que pertenece: "); t.ExpedienteId = int.Parse(Console.ReadLine()?? "");
     Console.WriteLine("Ingrese el contenido del trámite: "); t.Contenido = Console.ReadLine();
-    //La etiqueta es definida por el usuario o de acuerdo a la etiqueta del último tramite del expediente al que pertenece?
-    //Console.WriteLine("Ingrese la etiqueta del trámite(EscritoPresentado,PaseAEstudio,Despacho,Resolucion,Notificacion,PaseAlArchivo): ");
+    Console.WriteLine("Ingrese la etiqueta del trámite(EscritoPresentado,PaseAEstudio,Despacho,Resolucion,Notificacion,PaseAlArchivo): ");
     t.Etiqueta = Enum.Parse<EtiquetaTramite>(Console.ReadLine() ?? "");
-    int idu=int.Parse(idUsuario); 
-    ITramiteRepositorio traRepo= new TramiteRepositorioTXT();
+
+    ITramiteRepositorio tramiteRepo= new TramiteRepositorioTXT();
+    IExpedienteRepositorio expedienteRepo = new ExpedienteRepositorioTXT();
     IEspecificacionCambioEstado especificacion = new EspecificacionCambioEstado();
-    ServicioActualizacionEstado sae = new ServicioActualizacionEstado(especificacion);
-    IServicioAutorizacion autoProvisoria= new ServicioAutorizacionProvisorio(); 
-    IExpedienteRepositorio expRepo= new ExpedienteRepositorioTXT();
-    var casoAlta= new CasoDeUsoTramiteAlta(traRepo,expRepo, autoProvisoria,sae);
-    casoAlta.Ejecutar(t,idu);
+    ServicioActualizacionEstado servicioAE = new ServicioActualizacionEstado(especificacion,tramiteRepo,expedienteRepo);
+    IServicioAutorizacion autorizacionProvisoria= new ServicioAutorizacionProvisorio(); 
+
+    var casoAlta= new CasoDeUsoTramiteAlta(tramiteRepo, autorizacionProvisoria, servicioAE);
+    casoAlta.Ejecutar(t,idUsuario);
+    Console.WriteLine("El trámite fue agregado correctamente.");
+
   }
   catch (ValidacionException msj){
     Console.WriteLine(msj.Message);
@@ -171,17 +179,19 @@ void BajaTramite() {
   try{
     Tramite t=new Tramite();
     Console.WriteLine("Ingrese los siguientes datos para poder dar de baja un trámite: ");
-    Console.Write("Ingrese su id de usuario: "); string idUsuario=Console.ReadLine()?? "";
+    Console.Write("Ingrese su id de usuario: "); int idUsuario= int.Parse(Console.ReadLine()?? "");
     Console.Write("Ingrese el id del tramite que desea dar de baja: "); t.ExpedienteId = int.Parse(Console.ReadLine()?? "");
-    int idu=int.Parse(idUsuario);
-    ITramiteRepositorio traRepo= new TramiteRepositorioTXT();
+
+    ITramiteRepositorio tramiteRepo= new TramiteRepositorioTXT();
+    IExpedienteRepositorio expedienteRepo = new ExpedienteRepositorioTXT();
     IEspecificacionCambioEstado especificacion = new EspecificacionCambioEstado();
-    ServicioActualizacionEstado sae = new ServicioActualizacionEstado(especificacion);
-    IServicioAutorizacion autoProvisoria= new ServicioAutorizacionProvisorio(); 
-    IExpedienteRepositorio expRepo= new ExpedienteRepositorioTXT();
-    var casoBaja= new CasoDeUsoTramiteBaja(traRepo,expRepo, autoProvisoria,sae);
-    casoBaja.Ejecutar(t,idu);
-    Console.WriteLine($"Se eliminó el tramite con id {t.ExpedienteId}");
+    ServicioActualizacionEstado servicioAE = new ServicioActualizacionEstado(especificacion,tramiteRepo,expedienteRepo);
+    IServicioAutorizacion autorizacionProvisoria= new ServicioAutorizacionProvisorio(); 
+    var casoBaja= new CasoDeUsoTramiteBaja(tramiteRepo, autorizacionProvisoria,servicioAE);
+
+    casoBaja.Ejecutar(t,idUsuario);
+    Console.WriteLine($"Se eliminó el tramite con id {t.ExpedienteId}.");
+
   }
   catch (ValidacionException msj){
     Console.WriteLine(msj.Message);
@@ -193,7 +203,7 @@ void BajaTramite() {
 
 void ConsultaTramitesPorEtiqueta(){
  try{
-    Console.WriteLine("Ingrese la etiqueta para listar todos los tramites con la misma: ");
+    Console.WriteLine("Ingrese etiqueta: ");
     EtiquetaTramite etiqueta = Enum.Parse<EtiquetaTramite>(Console.ReadLine() ?? "");
     ITramiteRepositorio tramiteRepo = new TramiteRepositorioTXT();
     var casoConsultarEtiqueta = new CasoDeUsoTramiteConsultaPorEtiqueta(tramiteRepo);
@@ -201,9 +211,6 @@ void ConsultaTramitesPorEtiqueta(){
     foreach(Tramite t in L){
       Console.WriteLine(t);
     }
- }
- catch (RepositorioException e){
-  Console.WriteLine(e.Message);
  }
  catch (Exception e){
    Console.WriteLine(e.Message);
@@ -221,19 +228,19 @@ void ModificarTramite(){
     Console.Write("Nueva etiqueta: "); t.Etiqueta = Enum.Parse<EtiquetaTramite>(Console.ReadLine() ?? "");
     Console.Write("Nuevo contenido: "); t.Contenido = Console.ReadLine();
     int idu=int.Parse(idUsuario);
-    ITramiteRepositorio traRepo= new TramiteRepositorioTXT();
+    ITramiteRepositorio tramiteRepo= new TramiteRepositorioTXT();
+    IExpedienteRepositorio expedienteRepo = new ExpedienteRepositorioTXT();
     IEspecificacionCambioEstado especificacion = new EspecificacionCambioEstado();
-    ServicioActualizacionEstado sae = new ServicioActualizacionEstado(especificacion);
-    IServicioAutorizacion autoProvisoria= new ServicioAutorizacionProvisorio(); 
-    IExpedienteRepositorio expRepo= new ExpedienteRepositorioTXT();
-    var casoModificar= new CasoDeUsoTramiteModificacion(traRepo,expRepo, autoProvisoria,sae);
+    ServicioActualizacionEstado servicioAE = new ServicioActualizacionEstado(especificacion,tramiteRepo,expedienteRepo);
+    IServicioAutorizacion autorizacionProvisoria= new ServicioAutorizacionProvisorio(); 
+    var casoModificar= new CasoDeUsoTramiteModificacion(tramiteRepo,autorizacionProvisoria,servicioAE);
+
     casoModificar.Ejecutar(t,idu);
-    Console.WriteLine($"Se modificó el tramite con id {t.Id}");
+    Console.WriteLine($"Se modificó el tramite con id {t.Id}.");
   }
   catch (ValidacionException msj){
     Console.WriteLine(msj.Message);
   }
   catch(Exception msj){
     Console.WriteLine(msj.Message);
-  }  
-}
+  }
