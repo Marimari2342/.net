@@ -4,9 +4,7 @@ using SGE.Aplicacion;
 public class ExpedienteRepositorioTXT : IExpedienteRepositorio
 {
     
-    readonly string _nombreArch; //No deberíamos hacer readonly string _nombreArch= "expedientes.txt"? 
-    //Porque el nombre del archivo _nombreArch se declara como un campo de solo lectura y no se inicializa en ningún lugar
-
+    readonly string _nombreArch = 'expediente.txt'
 
 
     //Retorna id para el expediente que se quiere dar de alta
@@ -28,7 +26,6 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
         Agregar(exp);
       }
     }
-
 
     public void Agregar(Expediente e)
     {

@@ -12,5 +12,6 @@ public class CasoDeUsoExpedienteModificacion(IExpedienteRepositorio expedienteRe
 
         // Asignar fecha de modificación
         expediente.FechaModificacion = DateTime.Now;
+        expedienteRepositorio.Modificar(expediente e)
     }
 }
