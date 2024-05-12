@@ -4,7 +4,8 @@ using SGE.Aplicacion;
 public class ExpedienteRepositorioTXT : IExpedienteRepositorio
 {
     
-    readonly string _nombreArch = 'expediente.txt'
+    readonly string _nombreArch = "expediente.txt";
+
 
 
     //Retorna id para el expediente que se quiere dar de alta
@@ -63,7 +64,7 @@ public class ExpedienteRepositorioTXT : IExpedienteRepositorio
     {
         Expediente? resultado = null;
         using var sr = new StreamReader(_nombreArch);
-        while (!sr.EndOfStream)&&(expediente.Id != id)
+        while (!sr.EndOfStream & (expediente.Id != id))
         {
             var expediente = new Expediente();
             expediente.Id = int.Parse(sr.ReadLine() ?? "");

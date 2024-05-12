@@ -4,7 +4,6 @@ public class ServicioAutorizacionProvisorio : IServicioAutorizacion
 {
     public bool PoseeElPermiso(int IdUsuario)
     {
-<<<<<<< HEAD
     bool aux;
     if (IdUsuario != 1) {
         // Lanzar la excepción con el mensaje adecuado
@@ -15,4 +14,5 @@ public class ServicioAutorizacionProvisorio : IServicioAutorizacion
         aux = true;
     }
     return aux; // Asegúrate de devolver el valor auxiliar en todos los casos
+    }
 }

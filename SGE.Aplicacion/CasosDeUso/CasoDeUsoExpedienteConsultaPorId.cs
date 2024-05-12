@@ -16,15 +16,19 @@ public class CasoDeUsoExpedienteConsultaPorId
   public Expediente ConsultarConTramites(int idExpediente)
 {
     // Obtener expediente
-    Expediente expediente = _expedienteRepositorio.ObtenerPorId(idExpediente);
+    Expediente expediente = expedienteRepositorio.ObtenerPorId(idExpediente);
 
     // Obtener trámites asociados al expediente
-    List<Tramite> tramites = _tramiteRepositorio.ListarPorIdExpediente(idExpediente);
-    
-    // Asignar los trámites al expediente
-    expediente.Tramites = tramites;
+    List<Tramite> tramites = ObtenerTramites(idExpediente);
 
+    // Hacer lo que necesites con los tramites obtenidos
+    
     return expediente;
 }
 
+private List<Tramite> ObtenerTramites(int idExpediente)
+{
+    // Lista todos los trámites del expediente cuyo Id es el pasado como parámetro
+    return tramiteRepositorio.ListarPorIdExpediente(idExpediente);
+}
 }
