@@ -8,7 +8,29 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
  public List<Tramite> ListarPorIdExpediente(int idExpediente)
     {
         // Aquí implementa la lógica para listar los trámites por el ID del expediente desde el archivo de texto
-        throw new NotImplementedException(); // Reemplaza esto con la lógica real
+        var resultado = new List<Tramite>();
+        using var sr = new StreamReader(_nombreArch);
+        while (!sr.EndOfStream){
+            var tramite = new Tramite();
+            tramite.Id = int.Parse(sr.ReadLine() ?? "");
+            tramite.ExpedienteId =  int.Parse(sr.ReadLine() ?? "");
+            if(tramite.ExpedienteId == idExpediente){ 
+              tramite.Etiqueta = Enum.Parse<EtiquetaTramite>(sr.ReadLine() ?? "");
+              tramite.Contenido= sr.ReadLine();
+              tramite.FechaCreacion=DateTime.Parse(sr.ReadLine() ?? "");
+              tramite.UltimaModificacion= DateTime.Parse(sr.ReadLine()?? "");
+              tramite.IdUsuarioUltimaModificacion= int.Parse(sr.ReadLine() ?? "");
+              resultado.Add(tramite);
+            }
+            else{
+                for(int i=0; i<5; i++){ 
+                    sr.ReadLine();
+                }
+            }
+
+        }
+        sr.Close();
+        return resultado; 
     }
 
    public Tramite ObtenerPorId(int id)
@@ -57,25 +79,21 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
   }
 
   //Caso de uso trámite BAJA
-  public void Eliminar(int id)
-  {
-    bool ok = false;
-    List<Tramite> lista = ListarTramites();
-    int i = 0;
-    while ((i < lista.Count) && (!ok))
-    {
-      if (lista[i].Id == id)
-      {
-        ok = true;
-        lista.RemoveAt(i);
-        GuardarCambios(lista);
-      }
-      i++;
-    }
-    if (!ok)
-    {
-      throw new RepositorioException($"El tramite que quiere dar de baja no existe");
-    }
+    //Caso de uso trámite MODIFICACIÓN
+    public void Modificar(Tramite t, out bool ok){
+        ok=false;
+        List<Tramite> lista=ListarTramites();
+        int i=0;
+        while( (i<lista.Count) && !ok ){
+            if(lista[i].Id == t.Id){
+                ok=true;
+                t.ExpedienteId = lista[i].ExpedienteId;
+                t.FechaCreacion = lista[i].FechaCreacion;
+                lista[i]=t;
+                GuardarCambios(lista);
+            }
+            i++;
+        }
     // Desde acá llamo al método ActualizarEstado() o desde donde??
   }
 
@@ -135,28 +153,22 @@ public class TramiteRepositorioTXT : ITramiteRepositorio
   }
 
   //Caso de uso trámite MODIFICACIÓN
-  public void Modificar(Tramite t)
-  {
-    bool ok = false;
-    List<Tramite> lista = ListarTramites();
-    int i = 0;
-    while ((i < lista.Count) && !ok)
-    {
-      if (lista[i].Id == t.Id)
-      {
-        ok = true;
-        t.ExpedienteId = lista[i].ExpedienteId;
-        t.FechaCreacion = lista[i].FechaCreacion;
-        lista[i] = t;
-        GuardarCambios(lista);
-      }
-      i++;
+    public void Modificar(Tramite t, out bool ok){
+        ok=false;
+        List<Tramite> lista=ListarTramites();
+        int i=0;
+        while( (i<lista.Count) && !ok ){
+            if(lista[i].Id == t.Id){
+                ok=true;
+                t.ExpedienteId = lista[i].ExpedienteId;
+                t.FechaCreacion = lista[i].FechaCreacion;
+                lista[i]=t;
+                GuardarCambios(lista);
+            }
+            i++;
+        }
+
     }
-    if (!ok)
-    {
-      throw new RepositorioException($"Eltramite con el id ingresado no existe");
-    }
-  }
 
 
   //Falta agregarlo a cuando modifican, eliminan y agregan un trámite... 
